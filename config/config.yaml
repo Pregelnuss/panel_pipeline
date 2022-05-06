@@ -1,0 +1,5 @@
+workdir: "/home/nina/Documents/uni/appliedseqan_ss22/a2/"
+env_dir: "/home/nina/Documents/uni/appliedseqan_ss22/a2/env/env.yaml"
+ref: "/home/nina/Documents/uni/appliedseqan_ss22/a2/reference/ref.fa"
+samples: "/home/nina/Documents/uni/appliedseqan_ss22/a2/scripts/sample.tsv"
+

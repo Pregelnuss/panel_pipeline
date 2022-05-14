@@ -1,5 +1,13 @@
-workdir: "/home/nina/Documents/uni/appliedseqan_ss22/a2/"
-env_dir: "/home/nina/Documents/uni/appliedseqan_ss22/a2/env/env.yaml"
-ref: "/home/nina/Documents/uni/appliedseqan_ss22/a2/reference/ref.fa"
-samples: "/home/nina/Documents/uni/appliedseqan_ss22/a2/scripts/sample.tsv"
+ref: "resources/reference/ref.fa"
+# those are random parameters for bowtie2, this might/should be changed in the future
+bow_N: 0 
+bow_speed: "very-fast" 
 
+# set either data_dir or samples, the other should be false
+# directory where the data is (or the symlink to the data)
+data_dir: "resources/data"
+# path to sample sheet as tsv
+samples: False
+
+# this was just a test. might be needed if adapters need to be trimmed
+adapter: "resources/adapter/TruSeq2-PE.fa"

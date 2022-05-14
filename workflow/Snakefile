@@ -1,0 +1,33 @@
+import pandas as pd
+from pathlib import Path
+import os
+from scripts.samples_auto import read_sample # load the tsv with samples or create a new dataframe to use it, configure either in config.yaml
+
+configfile: "config/config.yaml"
+
+ref_file = Path(config["ref"])
+
+# either tsv provided by user, or create new from data in data folder. script works for a specific type of name formats!!!
+if config["samples"]:
+    samples = pd.read_csv(config["samples"], index_col = "sample", sep = '\t')
+elif config["data_dir"]:
+    samples = read_sample(config["data_dir"])
+else:
+    print("no samples detected")
+
+rule all:
+    input: 
+        expand("results/stats/{sample}.stats_aug", sample = list(samples.index)),
+        "results/qc/multiqc_report.html"
+
+rule rpk:
+    input:
+        "results/stats/{sample}.stats"
+    output:
+        "results/stats/{sample}.stats_aug"
+    script:
+        "scripts/calc_rpk.py"
+
+include: "rules/qc.smk"
+include: "rules/bowtie.smk"
+include: "rules/samtools.smk"

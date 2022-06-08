@@ -17,17 +17,17 @@ else:
 
 rule all:
     input: 
-        expand("results/stats/{sample}.stats_aug", sample = list(samples.index)),
+        # expand("results/stats/{sample}.stats_aug", sample = list(samples.index)),
         "results/qc/multiqc_report.html"
 
-rule rpk:
-    input:
-        "results/stats/{sample}.stats"
-    output:
-        "results/stats/{sample}.stats_aug"
-    script:
-        "scripts/calc_rpk.py"
+# rule rpk:
+#     input:
+#         "results/stats/{sample}.stats"
+#     output:
+#         "results/stats/{sample}.stats_aug"
+#     script:
+#         "scripts/calc_rpk.py"
 
 include: "rules/qc.smk"
-include: "rules/bowtie.smk"
-include: "rules/samtools.smk"
+# include: "rules/bowtie.smk"
+# include: "rules/samtools.smk"

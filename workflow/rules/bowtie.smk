@@ -36,10 +36,10 @@ rule bowtie2_build:
 
 rule bowtie2:
     input:
-        #r1= lambda wildcards: samples.at[wildcards.sample, 'fq1'], 
-        #r2= lambda wildcards: samples.at[wildcards.sample, 'fq2'],
-        r1="results/trimmed/{sample}_1P.fq.gz",
-        r2="results/trimmed/{sample}_2P.fq.gz",
+        r1= lambda wildcards: samples.at[wildcards.sample, 'fq1'], 
+        r2= lambda wildcards: samples.at[wildcards.sample, 'fq2'],
+        #r1="results/trimmed/{sample}_1P.fq.gz",
+        #r2="results/trimmed/{sample}_2P.fq.gz",
         idx = multiext(
             ref_ref,
             ".1.bt2",
